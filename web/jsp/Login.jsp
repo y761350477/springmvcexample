@@ -21,5 +21,12 @@
 <body>
     <input type="text" value="12" id="test1">
     <button onclick="test()">Click</button>
+    <br/>
+    <%--通过post方式提交，获取的中文字符会乱码，get却不会。（乱码可以通过在web.xml中配置filter过滤器解决）--%>
+    <form action="/filter" method="post">
+        <input type="text" name="name"/>
+        <input type="password" name="pwd">
+        <input type="submit"/>
+    </form>
 </body>
 </html>

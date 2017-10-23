@@ -13,9 +13,11 @@
     <context:component-scan base-package="com.yc.controller"/>
     <context:component-scan base-package="com.yc.test1"/>
     <context:component-scan base-package="com.yc.test"/>
+    <context:component-scan base-package="com.yc.filter"/>
+    <context:component-scan base-package="com.yc.intercept"/>
     <mvc:annotation-driven/>
     <bean id="view" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/jsp/"></property>
+        <property name="prefix" value="/jsp/"></property>
         <property name="suffix" value=".jsp"></property>
     </bean>
 
@@ -33,5 +35,21 @@
     <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="defaultErrorView" value="/error.jsp"/>
     </bean>
+
+    <!--注册拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--配置拦截器拦截规则-->
+            <!--      /**的意思是所有文件夹及里面的子文件夹
+                       /*是所有文件夹，不含子文件夹
+                       /是web项目的根目录
+                     -->
+            <mvc:mapping path="/**"/>
+            <mvc:mapping path="/filter.php"/><!--只拦截filter.php结尾的，不会拦截test.form-->
+            <mvc:mapping path="/*.php"/>
+            <mvc:mapping path="/*/*.php"/>
+            <bean class="com.yc.intercept.TestInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 </beans>

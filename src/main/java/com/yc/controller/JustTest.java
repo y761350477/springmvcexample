@@ -54,4 +54,9 @@ public class JustTest {
         System.out.println("sayHello");
         return "B";
     }
+
+    @RequestMapping("/t")
+    public String t() {
+        return "success";
+    }
 }

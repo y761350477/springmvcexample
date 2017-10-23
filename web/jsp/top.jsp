@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-    JustTop.jsp?<br/>
+    JustTop.jsp<br/>
 </body>
 </html>
